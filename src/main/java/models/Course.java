@@ -35,7 +35,7 @@ public class Course {
         this.id = id;
     }
 
-    @Column(name = "students")
+    @OneToMany(mappedBy = "course")
     public Set<Student> getStudents() {
         return students;
     }
@@ -62,7 +62,7 @@ public class Course {
         this.levels = levels;
     }
 
-    @Column(name = "lessons")
+    @OneToMany(mappedBy = "course")
     public Set<Lesson> getLessons() {
         return lessons;
     }

@@ -1,5 +1,7 @@
 package db;
 
+import models.Lesson;
+import models.Student;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -73,4 +75,9 @@ public class DBHelper {
         }
     }
 
+    public static void addStudentToLesson(Lesson lesson, Student student){
+        lesson.addStudent(student);
+        student.addLesson(lesson);
+        save(lesson);
+    }
 }
