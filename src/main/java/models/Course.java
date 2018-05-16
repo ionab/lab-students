@@ -2,6 +2,8 @@ package models;
 
 
 import javax.persistence.*;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,14 +15,19 @@ public class Course {
     private Levels levels;
     private Set<Student> students;
     private Set<Lesson> lessons;
+    private Calendar startDate;
+    private Calendar endDate;
+
 
 
     public Course() {
     }
 
-    public Course(String title, Levels levels) {
+    public Course(String title, Levels levels, Calendar startDate, Calendar endDate) {
         this.title = title;
         this.levels = levels;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     @Id
@@ -69,5 +76,24 @@ public class Course {
 
     public void setLessons(Set<Lesson> lessons) {
         this.lessons = lessons;
+    }
+
+    @Temporal(TemporalType.DATE)
+    public Calendar getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Calendar startDate) {
+        this.startDate = startDate;
+    }
+
+
+    @Temporal(TemporalType.DATE)
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Calendar endDate) {
+        this.endDate = endDate;
     }
 }
